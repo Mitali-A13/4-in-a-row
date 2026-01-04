@@ -8,7 +8,7 @@ const BACKEND_URL = (() => {
     }
     
     // Production 
-    return '';
+    return 'https://four-in-a-row-e8lr.onrender.com';
 })();
 
 // Game state
