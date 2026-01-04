@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>4 in a Row - Connect Four Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>4 in a Row</h1>
+            <p class="subtitle">Connect Four in Real-Time!</p>
+        </header>
+
+        <!-- Login Screen -->
+        <div id="loginScreen" class="screen active">
+            <div class="login-box">
+                <h2>Ready to Play?</h2>
+                <input 
+                    type="text" 
+                    id="usernameInput" 
+                    placeholder="Enter your cool name..." 
+                    maxlength="20"
+                />
+                <button id="joinBtn" class="btn btn-primary">Join Game</button>
+                <p class="info-text">You'll be matched instantly!</p>
+            </div>
+        </div>
+
+        <!-- Waiting Screen -->
+        <div id="waitingScreen" class="screen">
+            <div class="waiting-box">
+                <div class="spinner"></div>
+                <h2>Finding Opponent...</h2>
+                <p id="waitingText">Looking for another player</p>
+                <p class="timer">Time: <span id="waitTimer">0</span>s</p>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="screen">
+            <div class="game-info">
+                <div class="player-info" id="player1Info">
+                    <div class="player-disc player1-disc"></div>
+                    <span id="player1Name">Player 1</span>
+                </div>
+                <div class="turn-indicator" id="turnIndicator">
+                    Your Turn
+                </div>
+                <div class="player-info" id="player2Info">
+                    <div class="player-disc player2-disc"></div>
+                    <span id="player2Name">Player 2</span>
+                </div>
+            </div>
+
+            <div id="gameBoard" class="game-board">
+                
+            </div>
+
+            <div class="game-status" id="gameStatus" style="display: none;"></div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen">
+            <div class="gameover-box">
+                <h2 id="gameOverTitle">Game Over!</h2>
+                <p id="gameOverMessage"></p>
+                <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+                <button id="viewLeaderboardBtn" class="btn btn-secondary">Leaderboard</button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboardScreen" class="screen">
+            <div class="leaderboard-box">
+                <h2>Leaderboard</h2>
+                <table id="leaderboardTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Wins</th>
+                            <th>Losses</th>
+                            <th>Draws</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <!-- Rows will be added by JavaScript -->
+                    </tbody>
+                </table>
+                <button id="backToGameBtn" class="btn btn-secondary">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.IO Client -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
